@@ -76,7 +76,7 @@ void setup() {
   new Service::HAPProtocolInformation();
   new Characteristic::Version("1.1.0");
 
-  new Roomba(time_client);
+  new Roomba();
 }
 
 void loop() {

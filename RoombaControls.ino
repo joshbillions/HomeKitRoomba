@@ -1,8 +1,3 @@
-const byte currentDay = 3;
-// 0: Sunday, 1: Monday, 2: Tuesday, 3: Wednesday, 4: Thursday, 5: Friday, 6: Saturday
-const byte currentHour = 2;
-const byte currentMinute = 58;
-
 void roomba_start() {
   Serial2.begin(115200, SERIAL_8N1, rx_pin, tx_pin);
   Serial2.write(128);
@@ -30,6 +25,7 @@ void roomba_toggle_cleaning() {
 
 void roomba_sync_time() {
   Serial.println("Syncing roomba time...");
+  
   roomba_safe_mode();
   roomba_passive_mode();
 
@@ -37,5 +33,6 @@ void roomba_sync_time() {
   Serial2.write(rtc.getDayofWeek());
   Serial2.write(rtc.getHour(true));
   Serial2.write(rtc.getMinute());
+  
   delay(500);
 }
